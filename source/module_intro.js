@@ -12,20 +12,14 @@
  *
  */
 
-$.module('suggest', function() {
-
-	var module = this;
-
-	$.require
-	 .library(
-	 	'lookup',
-	 	'ui/core',
-	 	'ui/position'
-	 )
-	 .template(
-	 	'suggest/contextmenu',
-	 	'suggest/contextmenu.item'
-	 )
-	 .done(function(){
-
-	 	var exports = function() {
+$.require()
+ .library(
+ 	'lookup',
+ 	'ui/core',
+ 	'ui/position'
+ )
+ .template(
+ 	'suggest/contextmenu',
+ 	'suggest/contextmenu.item'
+ )
+ .done(function() {

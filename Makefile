@@ -1,24 +1,34 @@
-SRC_DIR = source
-BUILD_DIR = build
-FOUNDRY_DIR = ../..
-PRODUCTION_DIR = ${FOUNDRY_DIR}/scripts
-DEVELOPMENT_DIR = ${FOUNDRY_DIR}/scripts_
-UGLIFY = uglifyjs --unsafe -nc
+include ../../build/modules.mk
 
-BASE_FILES = ${FOUNDRY_DIR}/build/foundry_intro.js \
-${SRC_DIR}/module_intro.js \
-${SRC_DIR}/jquery.suggest.js \
-${SRC_DIR}/module_outro.js \
-${FOUNDRY_DIR}/build/foundry_outro.js
+MODULE = suggest
+FILENAME = ${MODULE}.js
+RAWFILE = ${DEVELOPMENT_DIR}/${MODULE}.raw.js
 
-all: body min
+SOURCE = ${SOURCE_DIR}/module_intro.js \
+${SOURCE_DIR}/jquery.${MODULE}.js \
+${SOURCE_DIR}/module_outro.js
 
-body:
-	cat ${BASE_FILES} > ${DEVELOPMENT_DIR}/suggest.js
-	mkdir -p ${DEVELOPMENT_DIR}/suggest
-	cp ${SRC_DIR}/*.ejs ${DEVELOPMENT_DIR}/suggest/
+PRODUCTION = ${PRODUCTION_DIR}/${FILENAME}
+DEVELOPMENT = ${DEVELOPMENT_DIR}/${FILENAME}
+PRODUCTION_FOLDER = ${PRODUCTION_DIR}/${MODULE}
+DEVELOPMENT_FOLDER = ${DEVELOPMENT_DIR}/${MODULE}
+
+all: raw module min clean
+
+raw:
+	cat ${SOURCE} > ${RAWFILE}
+
+module:
+	${MODULARIZE} -n "${MODULE}" -m ${RAWFILE} > ${DEVELOPMENT}
+
+	mkdir -p ${DEVELOPMENT_FOLDER}
+	cp ${SOURCE_DIR}/*.ejs ${DEVELOPMENT_FOLDER}/
 
 min:
-	${UGLIFY} ${DEVELOPMENT_DIR}/suggest.js > ${PRODUCTION_DIR}/suggest.js
-	mkdir -p ${PRODUCTION_DIR}/suggest
-	cp ${SRC_DIR}/*.ejs ${PRODUCTION_DIR}/suggest/
+	${UGLIFYJS} ${DEVELOPMENT} > ${PRODUCTION}
+
+	mkdir -p ${PRODUCTION_FOLDER}
+	cp ${SOURCE_DIR}/*.ejs ${DEVELOPMENT_FOLDER}/
+
+clean:
+	rm -fr ${RAWFILE}
