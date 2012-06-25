@@ -29,7 +29,8 @@ min:
 	${UGLIFYJS} ${DEVELOPMENT} > ${PRODUCTION}
 
 	mkdir -p ${PRODUCTION_FOLDER}
-	cp ${SOURCE_DIR}/*.ejs ${DEVELOPMENT_FOLDER}/
+	cp ${SOURCE_DIR}/jquery.suggest.contextmenu.ejs ${DEVELOPMENT_FOLDER}/jquery.suggest.contextmenu.htm
+	cp ${SOURCE_DIR}/jquery.suggest.contextmenu.item.ejs ${DEVELOPMENT_FOLDER}/jquery.suggest.contextmenu.item.htm
 
 clean:
 	rm -fr ${RAWFILE}
