@@ -460,7 +460,7 @@ $.Controller(
 				var menuItem = $(
 					self.options.onRenderItem(data, suggestType) ||
 					$.View(
-						self.template('menuItem'),
+						self.options.contextMenu["@menuItem"],
 						{
 							data: data,
 							title: data.title // TODO: Integrate contextMenu.display.format
