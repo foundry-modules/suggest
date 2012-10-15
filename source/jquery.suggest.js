@@ -280,7 +280,7 @@ $.Controller(
 		{
 			// populate()        - Populate using keyword from text field.
 			// populate(keyword) - Populate using provided keyword.
-			keyword = $.cleanDelimiter(keyword || self.textField.val(), self.options.keyword.separator);
+			keyword = $.trimSeparators(keyword || self.textField.val(), self.options.keyword.separator);
 
 			// If no keyword is given, we can only provide suggestions if:
 			// - Context menu is configured to display all suggestions

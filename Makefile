@@ -22,15 +22,15 @@ module:
 	${MODULARIZE} -n "${MODULE}" -m ${RAWFILE} > ${DEVELOPMENT}
 
 	mkdir -p ${DEVELOPMENT_FOLDER}
-	cp ${SOURCE_DIR}/suggest.contextmenu.ejs ${DEVELOPMENT_FOLDER}/suggest.contextmenu.htm
-	cp ${SOURCE_DIR}/suggest.contextmenu.item.ejs ${DEVELOPMENT_FOLDER}/suggest.contextmenu.item.htm
+	cp ${SOURCE_DIR}/suggest.contextmenu.ejs ${DEVELOPMENT_FOLDER}/contextmenu.htm
+	cp ${SOURCE_DIR}/suggest.contextmenu.item.ejs ${DEVELOPMENT_FOLDER}/contextmenu.item.htm
 
 min:
 	${UGLIFYJS} ${DEVELOPMENT} > ${PRODUCTION}
 
 	mkdir -p ${PRODUCTION_FOLDER}
-	cp ${SOURCE_DIR}/suggest.contextmenu.ejs ${PRODUCTION_FOLDER}/suggest.contextmenu.htm
-	cp ${SOURCE_DIR}/suggest.contextmenu.item.ejs ${PRODUCTION_FOLDER}/suggest.contextmenu.item.htm
+	cp ${SOURCE_DIR}/suggest.contextmenu.ejs ${PRODUCTION_FOLDER}/contextmenu.htm
+	cp ${SOURCE_DIR}/suggest.contextmenu.item.ejs ${PRODUCTION_FOLDER}/contextmenu.item.htm
 
 clean:
 	rm -fr ${RAWFILE}
