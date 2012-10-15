@@ -149,9 +149,9 @@ $.Controller(
 				//
 				onSelectItem: function(data, type){},
 
-				"@menu": 'jquery.suggest.contextmenu',
+				"@menu": 'suggest/contextmenu',
 
-				"@menuItem": 'jquery.suggest.contextmenu.item',
+				"@menuItem": 'suggest/contextmenu.item',
 
 				"{menu}": '.suggest-contextmenu',
 
